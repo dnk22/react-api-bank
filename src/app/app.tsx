@@ -1,13 +1,11 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./routes";
 
-import NxWelcome from './nx-welcome';
-
-export function App() {
+function App() {
   return (
-    <div>
-      <NxWelcome title="react-api-bank" />
-    </div>
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
   );
 }
 
