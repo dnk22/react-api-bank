@@ -1,83 +1,98 @@
 import { useState } from 'react';
-import Grid from '@mui/material/Unstable_Grid2';
-import human from '../../assets/images/human.png';
-import lamp from '../../assets/images/lamp.png';
-import {
-  Button,
-  FilledInput,
-  FormControl,
-  Grow,
-  IconButton,
-  Input,
-  InputAdornment,
-  InputLabel,
-  Slide,
-  TextField,
-} from '@mui/material';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import logo from '../../assets/images/logo-icon.svg';
 import './auth.scss';
 
 function Login() {
+  const [isLoad, setIsLoad] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="container-content">
-      <Grid container>
-        <Grid xs={12} md={6}>
-          <div className="h-full left"></div>
-        </Grid>
-        <Grid xs={12} md={6}>
-          <div className="flex justify-center items-center  h-screen flex-col">
-            <Grow in={true} timeout={1000}>
-              <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left title antialiased ">
-                Welcome to SoVy Web Tool! 👋
-              </h2>
-            </Grow>
-            <div
-              className="hidden max-sm:flex mb-[20px]"
-              style={{ columnGap: 10 }}
-            >
-              <a>Đăng nhập</a>
-              <a>Đăng ký</a>
-            </div>
-            <div className="max-sm:bg-white rounded-[10px] p-[20px] max-sm:w-11/12 md:w-[400px] flex flex-col max-sm:drop-shadow-xl">
-              <Slide direction="left" in={true} timeout={700} mountOnEnter>
-                <TextField
-                  id="userName"
-                  label="Tên người dùng"
-                  variant="standard"
+    <div className="theme-cyan">
+      <div
+        className="page-loader-wrapper"
+        style={{ display: isLoad ? 'block' : 'none' }}
+      >
+        <div className="loader">
+          <div className="m-t-30">
+            <img
+              src={logo}
+              width="48"
+              height="48"
+              alt="Lucid"
+            />
+          </div>
+          <p>Please wait...</p>
+        </div>
+      </div>
+      <div className="hide-border">
+        <div className="vertical-align-wrap">
+          <div className="vertical-align-middle auth-main">
+            <div className="auth-box">
+              <div className="top">
+                <img
+                  src={logo}
+                  alt="Lucid"
+                  style={{ height: '40px', margin: '10px' }}
                 />
-              </Slide>
-              <Slide direction="left" in={true} timeout={700} mountOnEnter>
-                <FormControl variant="filled">
-                  <InputLabel htmlFor="password">Password</InputLabel>
-                  <Input
-                    id="password"
-                    type={showPassword ? 'text' : 'password'}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={() => setShowPassword(true)}
-                          onMouseDown={(event) => event.preventDefault()}
-                          edge="end"
-                        >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                  />
-                </FormControl>
-              </Slide>
-              <span className="flex text-gray-700 dark:text-gray-600 text-xs mt-4 mb-[20px] justify-end">
-                Quên mật khẩu?
-              </span>
-              <Button variant="contained">Đăng nhập</Button>
+              </div>
+              <div className="card">
+                <div className="header">
+                  <p className="lead">Welcome to SoVy Web Tool! 👋</p>
+                </div>
+                <div className="body">
+                  <div className="form-auth-small" action="index.html">
+                    <div className="form-group">
+                      <label className="control-label sr-only">Email</label>
+                      <input
+                        className="form-control"
+                        id="signin-email"
+                        placeholder="Email"
+                        type="email"
+                        /* value={email} */
+                        value="user@thememakker.com"
+                        onChange={() => ({})}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label className="control-label sr-only">Password</label>
+                      <input
+                        className="form-control"
+                        id="signin-password"
+                        placeholder="Password"
+                        type="password"
+                        /* value={password} */
+                        value="secretpassword"
+                        onChange={() => ({})}
+                      />
+                    </div>
+                    <div className="form-group clearfix">
+                      <label className="fancy-checkbox element-left">
+                        <input type="checkbox" />
+                        <span>Remember me</span>
+                      </label>
+                    </div>
+                    <a
+                      className="btn btn-primary btn-lg btn-block"
+                      href="dashboard"
+                    >
+                      Login
+                    </a>
+                    <div className="bottom">
+                      <span className="helper-text m-b-10">
+                        <i className="fa fa-lock"></i> <a>Forgot password?</a>
+                      </span>
+                      <span>
+                        Don't have an account?{' '}
+                        <a href="registration">Register</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </div>
   );
 }
