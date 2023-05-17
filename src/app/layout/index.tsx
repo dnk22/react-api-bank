@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function LayoutCommon() {
   const navigate = useNavigate();
@@ -12,4 +12,5 @@ function LayoutCommon() {
   }, [isLogged, navigate]);
   return <div>layoy</div>;
 }
-export default LayoutCommon();
+
+export default LayoutCommon;

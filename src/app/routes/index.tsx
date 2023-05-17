@@ -12,7 +12,7 @@ function AppRouter() {
       <Route path="/auth/login" element={<Login />} />
       <Route path="/auth/registration" element={<Register />} />
       <Route path="/auth/recovery" element={<ForgotPassword />} />
-      <Route path="/" element={LayoutCommon}>
+      <Route path="/" element={<LayoutCommon />}>
         <Route path="/account" element={<Account />} />
       </Route>
     </Routes>
