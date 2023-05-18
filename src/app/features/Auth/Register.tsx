@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import TextFieldComponent from 'components/TextField';
 import { TRegisterFormData } from 'utils/types';
 import { registerAccount } from 'services/auth';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 function Register() {
   const navigate = useNavigate();
@@ -43,18 +43,6 @@ function Register() {
 
   return (
     <div className="theme-cyan">
-      <ToastContainer
-        position="top-right"
-        autoClose={1000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
       <div>
         <div className="vertical-align-wrap">
           <div className="vertical-align-middle auth-main">

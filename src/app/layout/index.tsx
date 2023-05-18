@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
+import Sider from './Sider';
 
 function LayoutCommon() {
   const navigate = useNavigate();
@@ -10,7 +12,12 @@ function LayoutCommon() {
       navigate('/auth/login');
     }
   }, [isLogged, navigate]);
-  return <div>layoy</div>;
+  return (
+    <div>
+      <Header />
+      <Sider />
+    </div>
+  );
 }
 
 export default LayoutCommon;
