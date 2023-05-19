@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Login() {
-  return <div></div>;
+function Account() {
+  return <div>account</div>;
 }
-export default Login;
+export default Account;

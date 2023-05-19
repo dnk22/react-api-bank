@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <AppRouter />
       <ToastContainer
         position="top-right"
@@ -18,7 +18,7 @@ function App() {
         pauseOnHover
         theme="light"
       />
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

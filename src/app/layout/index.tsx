@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import PageHeader from './components/PageHeader';
 import Header from './Header';
 import Sider from './Sider';
@@ -22,6 +22,15 @@ function LayoutCommon() {
       <div id="main-content">
         <div className="container-fluid">
           <PageHeader />
+          <div className="row clearfix">
+            <div className="col-lg-12">
+              <div className="card">
+                <div className="body">
+                  <Outlet />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

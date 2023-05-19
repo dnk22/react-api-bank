@@ -6,18 +6,23 @@ export type TMenuSideBar = {
 };
 export const menuSideBar: TMenuSideBar[] = [
   {
+    name: 'Tổng quan',
+    key: '/dashboard',
+    icon: 'icon-home',
+  },
+  {
     name: 'Hóa đơn',
     key: '/billing',
-    icon: 'icon-home',
+    icon: 'fa fa-shopping-cart',
   },
   {
     name: 'Cổng thanh toán',
     key: '/payment-gate',
-    icon: 'icon-grid',
+    icon: 'fa fa-credit-card-alt',
     children: [
       {
         name: 'Ví điện tử',
-        icon: 'icon-home',
+        icon: 'fa fa-regular file-invoice-dollar',
         key: '/payment-gate/wallet',
         children: [
           {
@@ -39,7 +44,7 @@ export const menuSideBar: TMenuSideBar[] = [
       },
       {
         name: 'Ngân hàng',
-        icon: 'icon-home',
+        icon: 'fa fa-university',
         key: '/payment-gate/bank',
         children: [
           {
@@ -68,12 +73,12 @@ export const menuSideBar: TMenuSideBar[] = [
   },
   {
     name: 'Captcha',
-    icon: 'icon-grid',
+    icon: 'fa fa-id-badge',
     key: '/captcha',
   },
   {
     name: 'Quản lý cron job',
     key: '/cron-management',
-    icon: 'icon-grid',
+    icon: 'fa fa-superpowers',
   },
 ];

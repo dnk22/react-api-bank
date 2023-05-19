@@ -26,7 +26,7 @@ function Header() {
   }
 
   return (
-    <nav className="navbar navbar-fixed-top">
+    <nav className="navbar navbar-fixed-top ">
       <div className="container-fluid">
         <div className="navbar-btn">
           <button
@@ -206,7 +206,7 @@ function Header() {
                 </ul>
               </li>
               <li>
-                <div className="icon-menu" onClick={onLogOut} about='Đăng xuất'>
+                <div className="icon-menu" onClick={onLogOut} about="Đăng xuất">
                   <i className="icon-login"></i>
                 </div>
               </li>

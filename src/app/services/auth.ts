@@ -23,3 +23,8 @@ export const loginAccount = async (data: TLoginFormData) => {
     return error;
   }
 };
+
+export const logoutAccount = () => {
+  localStorage.removeItem('token');
+  window.location.replace('/');
+};

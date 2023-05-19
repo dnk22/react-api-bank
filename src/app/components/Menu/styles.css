@@ -1,3 +1,7 @@
 .sub-menu {
   margin-left: 25px !important;
 }
+
+#menu-item {
+  cursor: pointer;
+}

@@ -2,8 +2,11 @@ import { memo, useState, useEffect } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import isEqual from 'react-fast-compare';
 import Menu from 'components/Menu';
+import { logoutAccount } from 'services/auth';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Sider() {
+  const navigate = useNavigate();
   const [menuActive, setMenuActive] = useState('menu');
   const [isLightTheme, setIsLightTheme] = useState(true);
   const [themeColor, setThemeColor] = useState('theme-cyan');
@@ -13,7 +16,11 @@ function Sider() {
   }, [themeColor]);
 
   return (
-    <div id="left-sidebar" className="sidebar" style={{ zIndex: 9 }}>
+    <div
+      id="left-sidebar"
+      className="sidebar"
+      style={{ zIndex: 9, userSelect: 'none' }}
+    >
       <div className="sidebar-scroll">
         <div className="user-account">
           <img
@@ -24,7 +31,7 @@ function Sider() {
             alt="User Profile"
           />
           <Dropdown>
-            <span>Welcome,</span>
+            <span>Xin Chào,</span>
             <Dropdown.Toggle
               variant="none"
               as="a"
@@ -35,21 +42,13 @@ function Sider() {
             </Dropdown.Toggle>
 
             <Dropdown.Menu className="dropdown-menu-right account">
-              <Dropdown.Item href="profilev2page">
-                <i className="icon-user"></i>My Profile
-              </Dropdown.Item>
-              <Dropdown.Item href="appinbox">
-                {' '}
-                <i className="icon-envelope-open"></i>Messages
-              </Dropdown.Item>
-              <Dropdown.Item>
-                {' '}
-                <i className="icon-settings"></i>Settings
+              <Dropdown.Item onClick={() => navigate('/account')}>
+                <i className="icon-user"></i>Thông tin cá nhân
               </Dropdown.Item>
               <li className="divider"></li>
-              <Dropdown.Item href="login">
+              <Dropdown.Item onClick={logoutAccount}>
                 {' '}
-                <i className="icon-power"></i>Logout
+                <i className="icon-power"></i>Đăng xuất
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
