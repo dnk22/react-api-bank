@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PageHeader from './components/PageHeader';
 import Header from './Header';
 import Sider from './Sider';
 
@@ -13,9 +14,16 @@ function LayoutCommon() {
     }
   }, [isLogged, navigate]);
   return (
-    <div>
-      <Header />
-      <Sider />
+    <div className="wrapper">
+      <div>
+        <Header />
+        <Sider />
+      </div>
+      <div id="main-content">
+        <div className="container-fluid">
+          <PageHeader />
+        </div>
+      </div>
     </div>
   );
 }

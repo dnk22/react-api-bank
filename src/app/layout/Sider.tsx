@@ -1,10 +1,16 @@
-import Menu from 'components/Menu';
-import { memo, useState } from 'react';
-import { Dropdown,  } from 'react-bootstrap';
+import { memo, useState, useEffect } from 'react';
+import { Dropdown } from 'react-bootstrap';
 import isEqual from 'react-fast-compare';
+import Menu from 'components/Menu';
 
 function Sider() {
   const [menuActive, setMenuActive] = useState('menu');
+  const [isLightTheme, setIsLightTheme] = useState(true);
+  const [themeColor, setThemeColor] = useState('theme-cyan');
+
+  useEffect(() => {
+    document.body.classList.add(themeColor);
+  }, [themeColor]);
 
   return (
     <div id="left-sidebar" className="sidebar" style={{ zIndex: 9 }}>
@@ -77,9 +83,9 @@ function Sider() {
             <div
               data-toggle="tab"
               className={
-                menuActive === 'settings' ? 'nav-link active' : 'nav-link'
+                menuActive === 'setting' ? 'nav-link active' : 'nav-link'
               }
-              onClick={() => setMenuActive('settings')}
+              onClick={() => setMenuActive('setting')}
             >
               <i className="icon-settings"></i>
             </div>
@@ -93,6 +99,138 @@ function Sider() {
             id="menu"
           >
             <Menu />
+          </div>
+          <div
+            className={
+              menuActive === 'setting'
+                ? 'tab-pane p-l-15 p-r-15 show active'
+                : 'tab-pane p-l-15 p-r-15'
+            }
+            id="setting"
+          >
+            <h6>Choose Mode</h6>
+            <ul className="choose-skin list-unstyled">
+              <li
+                data-theme="white"
+                className={
+                  document.body.classList.contains('full-dark') ? '' : 'active'
+                }
+                onClick={() => {
+                  setIsLightTheme(!isLightTheme);
+                  document.body.classList.remove('full-dark');
+                }}
+              >
+                <div className="white"></div>
+                <span>Light</span>
+              </li>
+              <li
+                data-theme="black"
+                className={
+                  document.body.classList.contains('full-dark') ? 'active' : ''
+                }
+                onClick={() => {
+                  setIsLightTheme(!isLightTheme);
+                  document.body.classList.add('full-dark');
+                }}
+              >
+                <div className="black"></div>
+                <span>Dark</span>
+              </li>
+            </ul>
+            <hr />
+            <h6>Choose Skin</h6>
+            <ul className="choose-skin list-unstyled">
+              <li
+                data-theme="purple"
+                className={themeColor === 'theme-purple' ? 'active' : ''}
+              >
+                <div
+                  className="purple"
+                  onClick={() => {
+                    if (themeColor !== 'theme-purple') {
+                      document.body.classList.remove(themeColor);
+                    }
+                    setThemeColor('purple');
+                  }}
+                ></div>
+                <span>Purple</span>
+              </li>
+              <li
+                data-theme="blue"
+                className={themeColor === 'theme-blue' ? 'active' : ''}
+              >
+                <div
+                  className="blue"
+                  onClick={() => {
+                    if (themeColor !== 'theme-blue') {
+                      document.body.classList.remove(themeColor);
+                    }
+                    setThemeColor('blue');
+                  }}
+                ></div>
+                <span>Blue</span>
+              </li>
+              <li
+                data-theme="cyan"
+                className={themeColor === 'theme-cyan' ? 'active' : ''}
+              >
+                <div
+                  className="cyan"
+                  onClick={() => {
+                    if (themeColor !== 'theme-cyan') {
+                      document.body.classList.remove(themeColor);
+                    }
+                    setThemeColor('cyan');
+                  }}
+                ></div>
+                <span>Cyan</span>
+              </li>
+              <li
+                data-theme="green"
+                className={themeColor === 'theme-green' ? 'active' : ''}
+              >
+                <div
+                  className="green"
+                  onClick={() => {
+                    if (themeColor !== 'theme-green') {
+                      document.body.classList.remove(themeColor);
+                    }
+                    setThemeColor('green');
+                  }}
+                ></div>
+                <span>Green</span>
+              </li>
+              <li
+                data-theme="orange"
+                className={themeColor === 'theme-orange' ? 'active' : ''}
+              >
+                <div
+                  className="orange"
+                  onClick={() => {
+                    if (themeColor !== 'theme-orange') {
+                      document.body.classList.remove(themeColor);
+                    }
+                    setThemeColor('orange');
+                  }}
+                ></div>
+                <span>Orange</span>
+              </li>
+              <li
+                data-theme="blush"
+                className={themeColor === 'theme-blush' ? 'active' : ''}
+              >
+                <div
+                  className="blush"
+                  onClick={() => {
+                    if (themeColor !== 'theme-blush') {
+                      document.body.classList.remove(themeColor);
+                    }
+                    setThemeColor('blush');
+                  }}
+                ></div>
+                <span>Blush</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

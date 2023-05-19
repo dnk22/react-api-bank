@@ -1,49 +1,63 @@
+import { Collapse, Slide } from '@mui/material';
 import { memo } from 'react';
 import { Nav } from 'react-bootstrap';
 import isEqual from 'react-fast-compare';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { TMenuSideBar, menuSideBar } from 'utils/constants/menu.constant';
+import './styles.css';
 
 function Menu() {
-  const isActiveRoute = (path: string) => {
-    return true;
-  };
+  const navigate = useNavigate();
   function activeMenuTabContainer(id: string) {
-    const parents = document.getElementById('main-menu');
     const activeMenu = document.getElementById(id);
-
-    for (let index = 0; index < parents?.children?.length; index++) {
-      if (parents?.children[index].id !== id) {
-        parents?.children[index].classList.remove('active');
-        parents?.children[index]?.children[1]?.classList.remove('in');
-      }
-    }
     setTimeout(() => {
       activeMenu?.classList.toggle('active');
+      activeMenu?.children[1].classList.toggle('collapse');
       activeMenu?.children[1].classList.toggle('in');
     }, 10);
   }
+
+  function handleOnMenuItemClick(item: TMenuSideBar) {
+    if (item?.children) {
+      activeMenuTabContainer(item.key);
+    } else {
+      navigate(item.key);
+    }
+  }
+
   function renderMenu(menu: TMenuSideBar[]) {
-    return menu.map((item: TMenuSideBar) => {
+    return menu.map((item: TMenuSideBar, index: number) => {
+      const isChild = item.key.split('/').length - 1 > 1;
       return (
-        <li className="" id={item.key} key={item.key}>
-          <Link
-            to={item.key}
-            className={
-              item.children
-                ? 'cursor-pointer rounded-[10px] has-arrow'
-                : 'cursor-pointer rounded-[10px]'
-            }
+        <Slide direction="right" in={true} timeout={200 * index} key={item.key}>
+          <li
+            className={isChild ? 'pl-[25px]' : ''}
+            id={item.key}
+            key={item.key}
           >
-            <i className={item.icon}></i> <span>{item.name}</span>
-          </Link>
-        </li>
+            <div
+              id="menu-item"
+              className={
+                item.children
+                  ? 'cursor-pointer rounded-[10px] has-arrow'
+                  : 'cursor-pointer rounded-[10px]'
+              }
+              onClick={() => handleOnMenuItemClick(item)}
+            >
+              <i className={item.icon} style={{ marginRight: 5 }}></i>{' '}
+              <span>{item.name}</span>
+            </div>
+            {item?.children && item.children.length && (
+              <ul className="collapse">{renderMenu(item.children)}</ul>
+            )}
+          </li>
+        </Slide>
       );
     });
   }
 
   return (
-    <Nav id="left-sidebar-nav" className="sidebar-nav">
+    <Nav id="left-sidebar-nav" className="sidebar-nav select-none">
       <ul id="main-menu" className="metismenu">
         {renderMenu(menuSideBar)}
       </ul>
