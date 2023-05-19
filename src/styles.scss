@@ -1,14 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
 
 @import 'react-toastify/dist/ReactToastify.min.css';
-
 @import 'app/assets/vendor/bootstrap.min.css';
 @import 'app/assets/scss/color_skins.scss';
 // @import 'app/assets/vendor/font-awesome/css/font-awesome.css';
 @import 'app/assets/scss/main.scss';
+
+body.layout-fullwidth #left-sidebar {
+  left: -250px;
+}
+body.layout-fullwidth #main-content {
+  width: 100%;
+}
 
 // body {
 //   height: 100vh;

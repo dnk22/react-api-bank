@@ -8,7 +8,7 @@ export const menuSideBar: TMenuSideBar[] = [
   {
     name: 'Hóa đơn',
     key: '/billing',
-    icon: 'icon-grid',
+    icon: 'icon-home',
   },
   {
     name: 'Cổng thanh toán',
@@ -17,7 +17,7 @@ export const menuSideBar: TMenuSideBar[] = [
     children: [
       {
         name: 'Ví điện tử',
-        icon: '',
+        icon: 'icon-home',
         key: '/payment-gate/wallet',
         children: [
           {
@@ -39,7 +39,7 @@ export const menuSideBar: TMenuSideBar[] = [
       },
       {
         name: 'Ngân hàng',
-        icon: '',
+        icon: 'icon-home',
         key: '/payment-gate/bank',
         children: [
           {
