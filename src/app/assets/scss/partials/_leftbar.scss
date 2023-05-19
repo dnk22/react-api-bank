@@ -1,7 +1,7 @@
 /* Side Bar Menu */
 
 #left-sidebar {
-  @include transition(all 0.3s ease-in-out);
+  @include transition(all 0.5s ease-in-out);
   width: $sidebar-width;
   height: calc(100vh - 67px);
   float: left;
@@ -165,7 +165,7 @@
     }
 
     #menu-item {
-      @include transition(all 0.3s ease-out);
+      @include transition(all 0.5s ease-out);
       position: relative;
       @extend .displayblock;
       padding: 13px 15px;

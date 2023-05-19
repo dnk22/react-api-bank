@@ -30,11 +30,7 @@ function Menu() {
       const isChild = item.key.split('/').length - 1 > 1;
       return (
         <Slide direction="right" in={true} timeout={200 * index} key={item.key}>
-          <li
-            className={isChild ? 'pl-[25px]' : ''}
-            id={item.key}
-            key={item.key}
-          >
+          <li className={isChild ? 'ml-4' : ''} id={item.key} key={item.key}>
             <div
               id="menu-item"
               className={

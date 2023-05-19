@@ -27,7 +27,11 @@ function PageHeader() {
                 onToggleMenu();
               }}
             >
-              <i className={'icon-arrow-left'}></i>
+              <i
+                className={
+                  toggleMenu ? `fa fa-arrow-left` : 'fa fa-arrow-right'
+                }
+              ></i>
             </a>{' '}
             {'Backdoor'}
           </h2>

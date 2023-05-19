@@ -20,6 +20,6 @@ export const loginAccount = async (data: TLoginFormData) => {
     );
     return response;
   } catch (error) {
-    console.error(error); // Handle any errors that occur during the API call
+    return error;
   }
 };

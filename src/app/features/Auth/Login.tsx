@@ -4,6 +4,7 @@ import TextFieldComponent from 'components/TextField';
 import { useForm } from 'react-hook-form';
 import { TLoginFormData } from 'utils/types';
 import { loginAccount } from 'services/auth';
+import { toast } from 'react-toastify';
 
 function Login() {
   const containerRef = useRef(null);
@@ -15,15 +16,44 @@ function Login() {
     },
   });
 
-  const onSubmit = (data: TLoginFormData) => {
-    loginAccount(data).then((res) => {
+  const onSubmit = async (data: TLoginFormData) => {
+    const res = await loginAccount(data);
+    if (res?.response?.status === 401) {
+      toast('Có lỗi xảy ra , vui lòng kiểm tra lại!', {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+    } else {
       const { data } = res;
       if (data.status) {
+        toast('Đăng nhập thành công.', {
+          position: 'top-right',
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        });
         localStorage.setItem('token', data.token);
         navigate('/');
       }
-    });
+    }
   };
+
+  const onEnter = (e: any) => {
+    if (e.key === 'Enter') {
+      handleSubmit(onSubmit);
+    }
+  };
+
   return (
     <div className="theme-cyan">
       <div className="hide-border">
@@ -46,7 +76,7 @@ function Login() {
                             message: 'Vui lòng điền tên người dùng',
                           },
                         }}
-                        type='text'
+                        type="text"
                         label="Tên người dùng"
                       />
                     </div>
@@ -60,8 +90,9 @@ function Login() {
                             message: 'Vui lòng điền mật khẩu',
                           },
                         }}
-                        type='password'
+                        type="password"
                         label="Mật khẩu"
+                        onKeyDown={onEnter}
                       />
                     </div>
                     <div className="form-group clearfix">

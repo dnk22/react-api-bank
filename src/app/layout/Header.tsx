@@ -1,34 +1,45 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import isEqual from 'react-fast-compare';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+  const navigate = useNavigate();
   const [toggleNotification, setToggleNotification] = useState(false);
   const [toggleEqualizer, setToggleEqualizer] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  useEffect(() => {
+    onPressSideMenuToggle();
+  }, [toggleMenu]);
+
+  function onPressSideMenuToggle() {
+    if (toggleMenu) {
+      document.body.classList.add('offcanvas-active');
+    } else {
+      document.body.classList.remove('offcanvas-active');
+    }
+  }
+
+  function onLogOut() {
+    localStorage.removeItem('token');
+    navigate('/auth/login');
+  }
+
   return (
     <nav className="navbar navbar-fixed-top">
       <div className="container-fluid">
         <div className="navbar-btn">
           <button
             className="btn-toggle-offcanvas"
-            // onClick={() => {
-            //   this.props.onPressSideMenuToggle();
-            // }}
+            onClick={() => {
+              setToggleMenu(!toggleMenu);
+            }}
           >
             <i className="lnr lnr-menu fa fa-bars"></i>
           </button>
         </div>
 
-        <div className="navbar-brand">
-          {/* <a href="dashboard">
-            <img
-              src={
-                document.body.classList.contains('full-dark') ? LogoWhite : Logo
-              }
-              alt="Lucid Logo"
-              className="img-responsive logo"
-            />
-          </a> */}
-        </div>
+        <div className="navbar-brand"></div>
 
         <div className="navbar-right">
           <form id="navbar-search" className="navbar-form search-form">
@@ -195,9 +206,9 @@ function Header() {
                 </ul>
               </li>
               <li>
-                <a href="login" className="icon-menu">
+                <div className="icon-menu" onClick={onLogOut} about='Đăng xuất'>
                   <i className="icon-login"></i>
-                </a>
+                </div>
               </li>
             </ul>
           </div>
