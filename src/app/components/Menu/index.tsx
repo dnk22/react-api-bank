@@ -1,5 +1,5 @@
-import { Collapse, Slide } from '@mui/material';
-import { memo } from 'react';
+import React, { memo } from 'react';
+import { Slide } from '@mui/material';
 import { Nav } from 'react-bootstrap';
 import isEqual from 'react-fast-compare';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +8,7 @@ import './styles.css';
 
 function Menu() {
   const navigate = useNavigate();
+
   function activeMenuTabContainer(id: string) {
     const activeMenu = document.getElementById(id);
     setTimeout(() => {

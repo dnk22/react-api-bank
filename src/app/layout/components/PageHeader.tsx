@@ -20,7 +20,7 @@ function PageHeader() {
         <div className="col-lg-5 col-md-6 col-sm-12">
           <h2>
             <a
-              href="#!"
+              href="toggle"
               className="btn btn-xs btn-link btn-toggle-fullwidth"
               onClick={(e) => {
                 e.preventDefault();

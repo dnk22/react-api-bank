@@ -6,6 +6,7 @@ import Register from '../features/Auth/Register';
 import Account from '../features/Account';
 import ForgotPassword from 'features/Auth/ForgotPassword';
 import PageNotFound from 'components/PageError/404';
+import PaymentManagement from 'features/PaymentManagement';
 
 function AppRouter() {
   return (
@@ -18,7 +19,7 @@ function AppRouter() {
         <Route path="/dashboard" index element={<Account />} />
         <Route path="/account" index element={<Account />} />
         <Route path="/billing" element={<Account />} />
-        <Route path="/payment-management" element={<Account />} />
+        <Route path="/payment-management" element={<PaymentManagement />} />
         <Route path="/captcha" element={<Account />} />
         <Route path="/cron-management" element={<Account />} />
       </Route>

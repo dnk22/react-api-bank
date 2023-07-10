@@ -1,5 +1,6 @@
-import * as React from 'react';
-import { Grow, TextField, TextFieldProps } from '@mui/material';
+import React from 'react';
+import { Grow, TextFieldProps } from '@mui/material';
+import { TextInput } from './styles';
 import { useController } from 'react-hook-form';
 
 type TextFieldComponentProps = TextFieldProps & {
@@ -13,6 +14,7 @@ export default function TextFieldComponent({
   label,
   control,
   rules,
+  sx,
   ...rest
 }: TextFieldComponentProps) {
   const {
@@ -25,7 +27,8 @@ export default function TextFieldComponent({
   });
   return (
     <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={800}>
-      <TextField
+      <TextInput
+        variant="outlined"
         label={label}
         value={value}
         onBlur={onBlur}
@@ -34,6 +37,7 @@ export default function TextFieldComponent({
         error={Boolean(error?.message)}
         helperText={error?.message}
         size="small"
+        sx={{ ...sx }}
         {...rest}
       />
     </Grow>
